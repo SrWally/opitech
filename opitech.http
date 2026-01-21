@@ -1,0 +1,6 @@
+@opitech_HostAddress = http://localhost:5088
+
+GET {{opitech_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
