@@ -21,26 +21,21 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=opitech.db"));
 
-// Registrar servicios personalizados
 builder.Services.AddScoped<ITransaccionalidad, Transaccionalidad>();
 builder.Services.AddScoped<ISiniestro, SiniestroDAL>();
 builder.Services.AddScoped<ICiudad, CiudadDAL>();
 builder.Services.AddScoped<IDepartamento, DepartamentoDAL>();
 builder.Services.AddScoped<ITipoSiniestro, TipoSiniestroDAL>();
 
-// MediatR
 builder.Services.AddMediatR(cfg => 
 {
     cfg.RegisterServicesFromAssembly(typeof(Aplicacion.Comandos.RegistrarSiniestro).Assembly);
 });
 
 var app = builder.Build();
-
-// Configure pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -50,9 +45,7 @@ if (app.Environment.IsDevelopment())
         c.RoutePrefix = "swagger";
     });
 }
-
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-
 app.Run();

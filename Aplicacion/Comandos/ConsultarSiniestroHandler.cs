@@ -1,4 +1,4 @@
-// Aplicacion/Comandos/ConsultarSiniestrosHandler.cs
+
 using MediatR;
 using Dominio.Interfaces;
 using Aplicacion.DTO;
@@ -20,7 +20,6 @@ namespace Aplicacion.Comandos
             ConsultarSiniestros request, 
             CancellationToken cancellationToken)
         {
-            // Lógica de filtrado y paginación
             var (siniestros, totalCount) = await _transaccionalidad.Siniestros.GetPagedAsync(
                 request.DepartamentoId,
                 request.FechaDesde,
@@ -28,7 +27,6 @@ namespace Aplicacion.Comandos
                 request.PageNumber,
                 request.PageSize);
             
-            // Mapear a DTO
             var items = siniestros.Select(MapToDto).ToList();
             
             return new PaginatedResult<SiniestroResponseDTO>(

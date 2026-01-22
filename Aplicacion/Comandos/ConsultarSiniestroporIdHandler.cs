@@ -16,13 +16,11 @@ namespace Aplicacion.Handlers
 
         public async Task<SiniestroResponseDTO?> Handle(ObtenerSiniestroPorId request, CancellationToken cancellationToken)
         {
-            // Obtener el siniestro desde el repositorio
             var siniestro = await _transaccionalidad.Siniestros.GetByIdAsync(request.Id);
             
             if (siniestro == null)
                 return null;
             
-            // Mapear a DTO
             return new SiniestroResponseDTO
             {
                 Id = siniestro.Id,
