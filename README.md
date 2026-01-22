@@ -6,7 +6,9 @@
 
 # Endpoints
 Dentro del swagger se encuentran los siguientes endpoints:
+
 GET Api/siniestros/Buscar: Endpoint que se consume mediante get que permite consultar los siniestros registrados en la base de datos.  Se puede filtrar por alguno o varios de los siguientes items: departamentoid, fechaInicio, fechaFin, Pagina y tamañoPagina.  
+
 POST Api/Siniestros/Registrar: Endpoint que se consume mediante post que permite registrar un siniestro.  La información a enviar es la siguiente: 
 {
   "fechaHora": "YYY-MM-DDTHH:MM:SS", //fecha y hora del siniestro
@@ -16,6 +18,7 @@ POST Api/Siniestros/Registrar: Endpoint que se consume mediante post que permite
   "numeroVictimas": N, //Cantidad de víctimas del siniestro
   "descripcion": "texto" //Cadena de texto opcional para observaciones del siniestro
 }
+
 GET API/Siniestro/detalle/{Id} Endpoint que se consume mediante get que permite consultar un siniestro en específico. Para esto, es necesario reemplazar {id} por el número del siniestro a consultar.
 
 
